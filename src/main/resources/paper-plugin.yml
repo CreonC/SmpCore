@@ -1,0 +1,4 @@
+name: SmpCore
+version: '${version}'
+main: me.creonc.smpcore.SmpCore
+api-version: '1.20'
