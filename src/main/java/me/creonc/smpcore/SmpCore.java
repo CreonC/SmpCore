@@ -1,5 +1,6 @@
 package me.creonc.smpcore;
 
+import me.creonc.smpcore.commands.SelectClass;
 import org.apache.commons.lang3.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -9,14 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class SmpCore extends JavaPlugin {
 
 
-    public boolean onCommand( CommandSender sender, Command command, String label, String[] args) {
-        // Handle the command
-        if (command.getName().equals("selectclass")) {
-            sender.sendMessage("Hello, world!"); //How to fix deprecated
-            return true;
-        }
-        return true;
-    }
+
 
     @Override
     public void onEnable() {
@@ -24,7 +18,7 @@ public final class SmpCore extends JavaPlugin {
         Bukkit.getLogger().info("Starting Plugin");
 
         try {
-            this.getCommand("selectclass").setExecutor(this::onCommand);
+            this.getCommand("selectclass").setExecutor(new SelectClass());
 
         }
         catch (NullPointerException e){
