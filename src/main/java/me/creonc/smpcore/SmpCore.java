@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poor written.
+public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly written.
 
 
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {

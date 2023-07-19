@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmpCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SmpCore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/me.creonc.SmpCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/me.creonc.SmpCore.main.iml" />
     </modules>
   </component>
 </project>
