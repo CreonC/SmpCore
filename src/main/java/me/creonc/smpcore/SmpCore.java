@@ -1,9 +1,9 @@
 package me.creonc.smpcore;
 
 import me.creonc.smpcore.commands.SelectClass;
+import me.creonc.smpcore.tabcomplete.AutoComplete;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.configuration.file.FileConfiguration;
 public final class SmpCore extends JavaPlugin {
 
 
@@ -13,13 +13,13 @@ public final class SmpCore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info("Starting Plugin");
+        getConfig().options().copyDefaults(true);
         this.saveDefaultConfig();
-        FileConfiguration config = this.getConfig();
-        SelectClass selectClass = new SelectClass(config);
-
+        SelectClass selectClass = new SelectClass(this);
+        AutoComplete tabCompleter = new AutoComplete();
         try {
             this.getCommand("selectclass").setExecutor(selectClass);
-
+            this.getCommand("selectclass").setTabCompleter(tabCompleter);
         }
         catch (NullPointerException e){
             Bukkit.getLogger().warning("Caught nullpointer... ");

@@ -14,3 +14,6 @@ commands:
   selectclasscancel:
     description: Cancel the selected class.
     usage: /selectclass cancel
+  selectclassunselect:
+    description: Unselect the current class.
+    usage: /selectclass unselect
