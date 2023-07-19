@@ -3,15 +3,32 @@ package me.creonc.smpcore.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class SelectClass implements CommandExecutor {
-    private String selectedClass;
+    private final HashMap<UUID, String> classSelections = new HashMap<>();
+    private final FileConfiguration config;
+
+    public SelectClass(FileConfiguration config) {
+        this.config = config;
+    }
 
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (!command.getName().equals("selectclass")) {
             return false;
         }
+
+        if (!(sender instanceof Player player)) {
+            sender.sendMessage("Only players can use this command.");
+            return true;
+        }
+
+        UUID uuid = player.getUniqueId();
 
         if (args.length == 0) {
             sender.sendMessage("Usage: /selectclass <class>");
@@ -20,27 +37,19 @@ public class SelectClass implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("confirm")) {
-            if (selectedClass == null) {
-                sender.sendMessage("No class selected. Use the /selectclass command to select a class.");
-                return true;
+            String className = classSelections.get(uuid);
+            if (className == null) {
+                sender.sendMessage("You have not selected a class yet. Use /selectclass <class> to select a class.");
+            } else {
+                // Save the selected class to the config file
+                config.set(uuid.toString(), className);
+                sender.sendMessage("Class selection confirmed.");
+                classSelections.remove(uuid);
             }
-
-            // Apply the selected class to the player
-            // ...
-
-            sender.sendMessage("Selected class confirmed: " + selectedClass);
-            selectedClass = null;
-
             return true;
         } else if (args[0].equalsIgnoreCase("cancel")) {
-            if (selectedClass == null) {
-                sender.sendMessage("No class selected. Use the /selectclass command to select a class.");
-                return true;
-            }
-
-            sender.sendMessage("Selected class canceled: " + selectedClass);
-            selectedClass = null;
-
+            classSelections.remove(uuid);
+            sender.sendMessage("Class selection canceled.");
             return true;
         }
 
@@ -62,6 +71,8 @@ public class SelectClass implements CommandExecutor {
             return true;
         }
 
+        classSelections.put(uuid, className);
+
         sender.sendMessage("Selected class: " + className);
 
         String abilities = switch (className.toLowerCase()) {
@@ -76,7 +87,6 @@ public class SelectClass implements CommandExecutor {
         }
 
         sender.sendMessage("Confirm selection? Type /selectclass confirm to confirm or /selectclass cancel to cancel.");
-        selectedClass = className;
 
         return true;
     }

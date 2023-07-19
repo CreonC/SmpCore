@@ -1,12 +1,9 @@
 package me.creonc.smpcore;
 
 import me.creonc.smpcore.commands.SelectClass;
-import org.apache.commons.lang3.ObjectUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-
+import org.bukkit.configuration.file.FileConfiguration;
 public final class SmpCore extends JavaPlugin {
 
 
@@ -16,9 +13,12 @@ public final class SmpCore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info("Starting Plugin");
+        this.saveDefaultConfig();
+        FileConfiguration config = this.getConfig();
+        SelectClass selectClass = new SelectClass(config);
 
         try {
-            this.getCommand("selectclass").setExecutor(new SelectClass());
+            this.getCommand("selectclass").setExecutor(selectClass);
 
         }
         catch (NullPointerException e){
@@ -36,6 +36,6 @@ public final class SmpCore extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
         Bukkit.getLogger().info("Stopping Plugin");
-        // TODO: Shutdown logic
+        saveConfig();
     }
 }
