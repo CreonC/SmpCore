@@ -1,5 +1,6 @@
 package me.creonc.smpcore.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -73,6 +74,7 @@ public class SelectClass implements CommandExecutor {
             String className = classSelections.get(uuid);
             // Remove the class from the config file
             if (className == null) {
+
                 sender.sendPlainMessage("You have not selected a class yet. Use /selectclass <class> to select a class.");
             }else {
                 config.set(uuid.toString(), null);
