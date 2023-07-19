@@ -5,8 +5,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import io.papermc.*;
-
 import java.util.Objects;
 
 public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly written.
