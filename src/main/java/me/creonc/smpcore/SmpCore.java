@@ -13,7 +13,7 @@ public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly 
 
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
         // Handle the command
-        if (command.getName().equals("SelectClass")) {
+        if (command.getName().equals("selectclass")) {
             sender.sendMessage("Hello, world!"); //How to fix deprecated
         }
         return true;
