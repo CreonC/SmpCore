@@ -4,14 +4,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
+
+import io.papermc.*;
 
 import java.util.Objects;
 
 public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly written.
 
 
-    public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
+    public boolean onCommand( CommandSender sender, Command command, String label, String[] args) {
         // Handle the command
         if (command.getName().equals("selectclass")) {
             sender.sendMessage("Hello, world!"); //How to fix deprecated
@@ -23,7 +24,7 @@ public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly 
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info("Starting Plugin");
-        getCommand("selectclass").setExecutor(this); //pls
+        this.getCommand("selectclass").setExecutor(this); //pls
         //TODO: Register command, set executor and load abu
     }
 
