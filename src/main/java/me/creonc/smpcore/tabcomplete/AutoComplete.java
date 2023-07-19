@@ -21,9 +21,6 @@ public class AutoComplete implements TabCompleter {
             completions.add("berserker");
             completions.add("alchemist");
             completions.add("healer");
-            return completions;
-        } else if (args.length == 2) {
-            List<String> completions = new ArrayList<>();
             completions.add("confirm");
             completions.add("cancel");
             completions.add("unselect");
