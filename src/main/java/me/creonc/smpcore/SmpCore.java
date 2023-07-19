@@ -14,7 +14,7 @@ public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly 
     public boolean onCommand(@NotNull CommandSender sender, Command command, @NotNull String label, String[] args) {
         // Handle the command
         if (command.getName().equals("SelectClass")) {
-            sender.sendMessage("Hello, world!");
+            sender.sendMessage("Hello, world!"); //How to fix deprecated
         }
         return true;
     }
@@ -23,7 +23,7 @@ public final class SmpCore extends JavaPlugin { //Fun Fact: This is very poorly 
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info("Starting Plugin");
-        Objects.requireNonNull(getCommand("SelectClass")).setExecutor(this);
+        getCommand("selectclass").setExecutor(this); //pls
         //TODO: Register command, set executor and load abu
     }
 
