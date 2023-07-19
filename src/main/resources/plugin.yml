@@ -5,6 +5,11 @@ api-version: '1.20'
 
 commands:
   selectclass:
-    usage: "/selectclass <Class name>"
-    description: "todo"
-    aliases: [class]
+    description: Select a class.
+    usage: /selectclass <class>
+  selectclassconfirm:
+    description: Confirm the selected class.
+    usage: /selectclass confirm
+  selectclasscancel:
+    description: Cancel the selected class.
+    usage: /selectclass cancel
