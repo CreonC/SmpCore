@@ -1,5 +1,6 @@
 package me.creonc.smpcore;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,7 +22,15 @@ public final class SmpCore extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         Bukkit.getLogger().info("Starting Plugin");
-        this.getCommand("selectclass").setExecutor(this::onCommand); //pls
+
+        try {
+            this.getCommand("selectclass").setExecutor(this::onCommand);
+
+        }
+        catch (NullPointerException e){
+            Bukkit.getLogger().warning("Caught nullpointer from plugin");
+            e.printStackTrace();
+        }
 
         //TODO: Register command, set executor and load abu
     }
