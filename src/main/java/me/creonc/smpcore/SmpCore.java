@@ -22,8 +22,9 @@ public final class SmpCore extends JavaPlugin {
 
         }
         catch (NullPointerException e){
-            Bukkit.getLogger().warning("Caught nullpointer from plugin");
+            Bukkit.getLogger().warning("Caught nullpointer... ");
             e.printStackTrace();
+            Bukkit.getLogger().warning("Plugin integrity cannot be confirmed. It is recommended to restart the server.");
         }
 
         //TODO: Register command, set executor and load abu
