@@ -3,6 +3,7 @@ version: '0.1.4'
 main: me.creonc.smpcore.SmpCore
 api-version: '1.20'
 author: CreonC
+contributor: LazerTC
 
 commands:
   selectclass:
