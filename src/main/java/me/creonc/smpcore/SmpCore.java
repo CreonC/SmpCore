@@ -4,10 +4,11 @@ import me.creonc.smpcore.commands.SelectClass;
 import me.creonc.smpcore.tabcomplete.AutoComplete;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import javax.swing.plaf.basic.BasicOptionPaneUI;
+import java.util.logging.Level;
+
 public final class SmpCore extends JavaPlugin {
-
-
-
 
     @Override
     public void onEnable() {
@@ -24,7 +25,8 @@ public final class SmpCore extends JavaPlugin {
         catch (NullPointerException e){
             Bukkit.getLogger().warning("Caught nullpointer... ");
             e.printStackTrace();
-            Bukkit.getLogger().warning("Plugin integrity cannot be confirmed. It is recommended to restart the server.");
+            Bukkit.getLogger().warning("");
+            Bukkit.getLogger().log(Level.SEVERE,"Plugin had caught an nullpointer error. It's recommended to restart the server.");
         }
 
         //TODO: Register command, set executor and load abu
