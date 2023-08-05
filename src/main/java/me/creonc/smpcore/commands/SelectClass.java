@@ -62,7 +62,7 @@ public class SelectClass implements CommandExecutor {
         } else if (args[0].equalsIgnoreCase("cancel")) {
             String className = classSelections.get(uuid);
             if (className == null) {
-                sender.sendPlainMessage("You have not selected a class yet. Use /selectclass <class> to select a class.");
+                sender.sendPlainMessage("You have not selected a class yet. Use /selectclass <classname> to select a class.");
 
             } else {
                 classSelections.remove(uuid);
